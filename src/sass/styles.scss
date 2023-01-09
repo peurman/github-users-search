@@ -1,0 +1,57 @@
+@forward './base/variables';
+@forward './base/mixins';
+@forward './base/fonts';
+
+body {
+  font: 300 18px/1.4 'kanitregular';
+  min-height: 100vh;
+  margin: 0;
+  background: rgb(45, 44, 44);
+  background: linear-gradient(
+    180deg,
+    rgba(45, 44, 44, 1) 0%,
+    rgba(32, 32, 40, 1) 85%,
+    rgba(38, 38, 38, 1) 100%
+  );
+}
+h1,
+h2 {
+  color: azure;
+  letter-spacing: 1px;
+  text-shadow: rgba(17, 136, 169, 0.611) 1px 1px 0px,
+    1px 1px 1px rgba(17, 136, 169, 0.611);
+  margin: 0;
+}
+h1 {
+  font-size: 1.8rem;
+}
+input {
+  border-radius: 5px;
+  border: 3px solid gray;
+  padding: 7px;
+  margin: 0 0 15px 0;
+  width: 320px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: darkslateblue;
+  text-align: center;
+  margin: 0;
+}
+input:focus {
+  outline: none !important;
+  border: 3px solid darkturquoise;
+  box-shadow: 0 0 3px whitesmoke;
+}
+a:link {
+  color: yellow;
+}
+a:visited {
+  color: darkkhaki;
+}
+a:hover {
+  color: aqua;
+}
+a:active,
+a:visited:active {
+  color: chartreuse;
+}

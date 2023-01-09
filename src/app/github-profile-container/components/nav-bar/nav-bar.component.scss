@@ -1,0 +1,9 @@
+@use '../../../../sass/styles.scss' as *;
+
+.nav-bar__container {
+  @include centerMeRow;
+  justify-content: space-evenly;
+  width: 90%;
+  padding: 20px 0;
+  border-bottom: 1px solid $tertiary-color;
+}
