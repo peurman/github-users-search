@@ -1,4 +1,4 @@
-export interface GithubRepos {
+export interface GithubRepo {
   id: number;
   node_id: 'R_kgDOH3I2_w';
   name: 'Henry-Group-Project-BOOKSTORE';

@@ -1,2 +1,16 @@
 <app-nav-bar (userSearched)="searchUser($event)"></app-nav-bar>
-<h2>{{ userToSearch }}</h2>
+<div *ngIf="errorMessage">
+  <app-not-found></app-not-found>
+</div>
+<div
+  *ngIf="
+    userProfile?.login && userProfile.public_repos > 0 && userRepos.length > 0
+  ">
+  <app-profile [userData]="userProfile"></app-profile>
+  <div *ngFor="let repo of userRepos">
+    <app-repository-card [repoData]="repo"> </app-repository-card>
+  </div>
+  <div *ngFor="let follower of userFollowers">
+    <app-follower-card [followerData]="follower"></app-follower-card>
+  </div>
+</div>

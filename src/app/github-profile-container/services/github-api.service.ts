@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { GithubProfile } from '../models/github-profile';
-import { GithubRepos } from '../models/github-repos';
+import { GithubRepo } from '../models/github-repos';
 import { GithubFollower } from '../models/github-follower';
 
 const headers = {
@@ -18,7 +18,7 @@ const followersPerPage = 100;
 export class GithubApiService {
   constructor(private http: HttpClient) {}
 
-  getStates(nameSearched: string): Observable<GithubProfile> {
+  getProfile(nameSearched: string): Observable<GithubProfile> {
     return this.http.get<GithubProfile>(
       `https://api.github.com/users/${nameSearched}`,
       {
@@ -26,16 +26,19 @@ export class GithubApiService {
       }
     );
   }
-  getRepos(userSearched: string, page: number): Observable<GithubRepos> {
-    return this.http.get<GithubRepos>(
+  getRepos(userSearched: string, page: number): Observable<GithubRepo[]> {
+    return this.http.get<GithubRepo[]>(
       `https://api.github.com/users/${userSearched}/repos?page=${page}&per_page=${reposPerPage}&sort=updated`,
       {
         headers,
       }
     );
   }
-  getFollowers(userSearched: string, page: number): Observable<GithubFollower> {
-    return this.http.get<GithubFollower>(
+  getFollowers(
+    userSearched: string,
+    page: number
+  ): Observable<GithubFollower[]> {
+    return this.http.get<GithubFollower[]>(
       `https://api.github.com/users/${userSearched}/followers?page=${page}&per_page=${followersPerPage}&sort=updated`,
       {
         headers,

@@ -1,3 +1,9 @@
+@use '../sass/styles.scss' as *;
+
 :host {
   width: 100%;
+}
+
+app-home {
+  @include centerMeColumn;
 }
