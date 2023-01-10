@@ -6,7 +6,8 @@
   gap: 10px;
   .main-profile_image-container {
     img {
-      width: 230px;
+      @include centerMeRow;
+      width: 235px;
       border-radius: 7px;
       margin: 5px;
     }
