@@ -23,6 +23,7 @@ export class HomeComponent {
   pages = 1;
   reposPerPage = 100;
   followersPerPage = 100;
+  totalStars = 0;
 
   searchUser(event: string) {
     this.githubService.getProfile(event).subscribe(
@@ -45,8 +46,9 @@ export class HomeComponent {
   }
 
   getRepositories(user: string, reposLength: number) {
-    this.tempUserRepos = [];
     this.userRepos = [];
+    this.totalStars = 0;
+    this.pages = 1;
     console.log('username: ', user, '- total repos: ', reposLength);
     if (reposLength > this.reposPerPage)
       this.pages = Math.ceil(reposLength / this.reposPerPage);
@@ -54,11 +56,13 @@ export class HomeComponent {
       for (let index = 1; index <= this.pages; index++) {
         this.githubService.getRepos(user, index).subscribe(
           data => {
-            this.tempUserRepos = this.tempUserRepos.concat(data);
-            console.log('Repo length: ', this.tempUserRepos.length);
-            if (index === this.pages) {
-              this.userRepos = this.tempUserRepos;
-              console.log('User repo length: ', this.userRepos.length);
+            this.userRepos = this.userRepos.concat(data);
+            console.log('Repo length: ', this.userRepos.length);
+            if (this.userRepos.length === reposLength) {
+              this.totalStars = this.userRepos.reduce((acum, el) => {
+                return acum + el.stargazers_count;
+              }, 0);
+              console.log('Total Stars: ', this.totalStars);
             }
           },
           error => {
@@ -74,6 +78,10 @@ export class HomeComponent {
         data => {
           this.userRepos = data;
           console.log('Repo length: ', this.userRepos.length);
+          this.totalStars = this.userRepos.reduce((acum, el) => {
+            return acum + el.stargazers_count;
+          }, 0);
+          console.log('Total Stars: ', this.totalStars);
         },
         error => {
           this.errorMessage = error.status;
@@ -85,8 +93,8 @@ export class HomeComponent {
   }
 
   getFollowers(user: string, followersLength: number) {
-    this.tempUserRepos = [];
-    this.userRepos = [];
+    this.userFollowers = [];
+    this.pages = 1;
     console.log('username: ', user, '- total followers: ', followersLength);
     if (followersLength > this.followersPerPage)
       this.pages = Math.ceil(followersLength / this.followersPerPage);
@@ -94,12 +102,8 @@ export class HomeComponent {
       for (let index = 1; index <= this.pages; index++) {
         this.githubService.getFollowers(user, index).subscribe(
           data => {
-            this.tempUserFollowers = this.tempUserFollowers.concat(data);
-            console.log('Follower length: ', this.tempUserFollowers.length);
-            if (index === this.pages) {
-              this.userFollowers = this.tempUserFollowers;
-              console.log('User follower length: ', this.userFollowers.length);
-            }
+            this.userFollowers = this.userFollowers.concat(data);
+            console.log('Follower length: ', this.userFollowers.length);
           },
           error => {
             this.errorMessage = error.status;

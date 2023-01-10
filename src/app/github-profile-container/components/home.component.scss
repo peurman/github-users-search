@@ -1,6 +1,44 @@
-@use '../../../sass/styles.scss' as *;
+@use 'styles.scss' as *;
 
 app-nav-bar {
   width: 100%;
   @include centerMeColumn;
+}
+
+.main-repos__container {
+  @include centerMeColumn;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+  .main-repos__title {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+  .main-repos__no-repository {
+    padding: 40px;
+    font-size: 1.2rem;
+  }
+  .main-repos__repositories {
+    @include gridColumns;
+    gap: 10px;
+  }
+}
+.main-follows__container {
+  @include centerMeColumn;
+  flex-wrap: wrap;
+  padding: 10px;
+  gap: 10px;
+  .main-follows__title {
+    font-size: 1.4rem;
+    margin: 0;
+  }
+  .main-follows__no-follower {
+    padding: 40px;
+    font-size: 1.2rem;
+  }
+  .main-follows__followers {
+    @include gridColumns;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 10px;
+  }
 }

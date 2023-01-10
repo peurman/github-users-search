@@ -1,0 +1,37 @@
+@use 'styles.scss' as *;
+
+.main-profile__container {
+  margin-top: 15px;
+  @include centerMeRow;
+  gap: 10px;
+  .main-profile_image-container {
+    img {
+      width: 230px;
+      border-radius: 7px;
+      margin: 5px;
+    }
+  }
+  .main-profile_info-container {
+    .main-profile__nameUser {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: $primary-color;
+    }
+    .main-profile__label-field {
+      @include centerMeRow;
+      justify-content: flex-start;
+      gap: 5px;
+      label:first-child {
+        width: 160px;
+        text-decoration: underline;
+        color: $read-only-color;
+      }
+      label:last-child {
+        font-weight: bold;
+      }
+      #empty-field {
+        font-weight: normal;
+      }
+    }
+  }
+}

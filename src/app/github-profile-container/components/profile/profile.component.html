@@ -1,1 +1,57 @@
-<p>{{ userData | json }}</p>
+<div class="main-profile__container">
+  <div class="main-profile_image-container">
+    <img [src]="userData.avatar_url" alt="avatar" />
+  </div>
+  <div class="main-profile_info-container">
+    <div class="main-profile__nameUser">
+      {{
+        userData.name
+          ? userData.name.toUpperCase()
+          : userData.login.toUpperCase()
+      }}
+    </div>
+    <div class="main-profile__label-field">
+      <label>Total Stars: </label>
+      <label>{{ stars }}</label>
+    </div>
+    <div class="main-profile__label-field">
+      <label>Total Repositories: </label>
+      <label>{{ userData.public_repos }}</label>
+    </div>
+    <div class="main-profile__label-field">
+      <label>Followings: </label>
+      <label>{{ userData.following }}</label>
+    </div>
+    <div class="main-profile__label-field">
+      <label>Company: </label>
+      <label *ngIf="userData.company"> {{ userData.company }}</label>
+      <label *ngIf="!userData.company" id="empty-field">
+        No company loaded</label
+      >
+    </div>
+    <div class="main-profile__label-field">
+      <label>Website: </label>
+      <label *ngIf="userData.blog">
+        <a [href]="userData.blog" target="_blank">Go to website</a>
+      </label>
+      <label *ngIf="!userData.blog" id="empty-field"> No website loaded</label>
+    </div>
+    <div class="main-profile__label-field">
+      <label>Location: </label>
+      <label *ngIf="userData.location"> {{ userData.location }}</label>
+      <label *ngIf="!userData.location" id="empty-field">
+        No location loaded</label
+      >
+    </div>
+    <div class="main-profile__label-field">
+      <label>Member since: </label>
+      <label> {{ userData.created_at | date }}</label>
+    </div>
+    <div class="main-profile__label-field">
+      <label>Link to Profile: </label>
+      <label>
+        <a [href]="userData.html_url" target="_blank">Go to profile</a>
+      </label>
+    </div>
+  </div>
+</div>

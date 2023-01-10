@@ -8,4 +8,5 @@ import { GithubProfile } from '../../models/github-profile';
 })
 export class ProfileComponent {
   @Input() userData!: GithubProfile;
+  @Input() stars = 0;
 }

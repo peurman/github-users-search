@@ -1,1 +1,11 @@
-<h4>{{ followerData.login }}</h4>
+<div class="follower-card__container">
+  <div class="follower-card_image-container">
+    <img [src]="followerData.avatar_url" alt="avatar" />
+  </div>
+  <div class="follower-card__rest-of-fields">
+    <label class="follower-card__title">{{ followerData.login }}</label>
+    <div class="follower-card__link-profile">
+      <a [href]="followerData.html_url" target="_blank">Go to profile</a>
+    </div>
+  </div>
+</div>

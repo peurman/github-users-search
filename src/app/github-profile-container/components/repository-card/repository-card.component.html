@@ -1,1 +1,23 @@
-<h2>{{ repoData.name | json }}</h2>
+<div class="repo-card__container">
+  <label class="repo-card__title">{{ repoData.name }}</label>
+  <div class="repo-card__rest-of-fields">
+    <div class="repo-card__label-field">
+      <label>Stars: </label>
+      <label>{{ repoData.stargazers_count }}</label>
+    </div>
+    <div class="repo-card__label-field">
+      <label>Forks: </label>
+      <label>{{ repoData.forks_count }}</label>
+    </div>
+    <div class="repo-card__label-field">
+      <label>Watchers: </label>
+      <label>{{ repoData.watchers_count }}</label>
+    </div>
+    <div class="repo-card__label-field">
+      <label>Reposority Link: </label>
+      <label>
+        <a [href]="repoData.html_url" target="_blank">Go to repository</a>
+      </label>
+    </div>
+  </div>
+</div>

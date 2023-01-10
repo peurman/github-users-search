@@ -1,0 +1,32 @@
+@use 'styles.scss' as *;
+
+.follower-card__container {
+  @include centerMeRow;
+  justify-content: space-between;
+  padding: 15px;
+  border: 1px solid whitesmoke;
+  border-radius: 5px;
+  background-color: rgba(35, 33, 33, 0.727);
+  .follower-card_image-container {
+    img {
+      width: 100px;
+      border-radius: 7px;
+      margin: 5px;
+    }
+  }
+  .follower-card__rest-of-fields {
+    @include centerMeColumn;
+    align-items: center;
+    align-content: space-between;
+    height: 100px;
+    .follower-card__title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: $primary-color;
+    }
+    .follower-card__link-profile {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+}

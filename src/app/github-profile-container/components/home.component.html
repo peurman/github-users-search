@@ -4,13 +4,35 @@
 </div>
 <div
   *ngIf="
-    userProfile?.login && userProfile.public_repos > 0 && userRepos.length > 0
+    userProfile?.login &&
+    ((userProfile.public_repos > 0 && userRepos.length > 0) ||
+      userProfile.public_repos === 0) &&
+    ((userProfile.followers > 0 && userFollowers.length > 0) ||
+      userProfile.followers === 0)
   ">
-  <app-profile [userData]="userProfile"></app-profile>
-  <div *ngFor="let repo of userRepos">
-    <app-repository-card [repoData]="repo"> </app-repository-card>
+  <app-profile [userData]="userProfile" [stars]="totalStars"></app-profile>
+  <div class="main-repos__container">
+    <h3 class="main-repos__title">Repositories</h3>
+    <div
+      class="main-repos__no-repository"
+      *ngIf="userProfile.public_repos === 0">
+      The user doesn't have any repository
+    </div>
+    <div class="main-repos__repositories" *ngIf="userProfile.public_repos > 0">
+      <div *ngFor="let repo of userRepos">
+        <app-repository-card [repoData]="repo"> </app-repository-card>
+      </div>
+    </div>
   </div>
-  <div *ngFor="let follower of userFollowers">
-    <app-follower-card [followerData]="follower"></app-follower-card>
+  <div class="main-follows__container">
+    <h3 class="main-follows__title">Followers</h3>
+    <div class="main-follows__no-follower" *ngIf="userProfile.followers === 0">
+      The user doesn't have any follower
+    </div>
+    <div class="main-follows__followers" *ngIf="userProfile.followers > 0">
+      <div *ngFor="let follower of userFollowers">
+        <app-follower-card [followerData]="follower"></app-follower-card>
+      </div>
+    </div>
   </div>
 </div>
