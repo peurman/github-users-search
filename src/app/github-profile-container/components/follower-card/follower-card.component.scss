@@ -4,9 +4,9 @@
   @include centerMeRow;
   justify-content: space-between;
   padding: 15px;
-  border: 1px solid whitesmoke;
+  border: 1px solid $border-color;
   border-radius: 5px;
-  background-color: rgba(35, 33, 33, 0.727);
+  background-color: $background-color;
   .follower-card_image-container {
     img {
       width: 100px;
@@ -19,10 +19,11 @@
     align-items: center;
     align-content: space-between;
     height: 100px;
+    width: 150px;
     .follower-card__title {
       font-size: 1.1rem;
       font-weight: bold;
-      color: $primary-color;
+      color: $title-color;
     }
     .follower-card__link-profile {
       font-size: 1rem;

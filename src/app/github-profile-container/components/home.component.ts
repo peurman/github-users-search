@@ -15,9 +15,7 @@ export class HomeComponent {
   constructor(private githubService: GithubApiService) {}
 
   userProfile!: GithubProfile;
-  tempUserRepos: GithubRepo[] = [];
   userRepos: GithubRepo[] = [];
-  tempUserFollowers: GithubFollower[] = [];
   userFollowers: GithubFollower[] = [];
   errorMessage = '';
   pages = 1;
@@ -126,5 +124,18 @@ export class HomeComponent {
           );
         }
       );
+  }
+
+  showInfo(): boolean {
+    if (
+      this.userProfile?.login &&
+      ((this.userProfile.public_repos > 0 && this.userRepos.length > 0) ||
+        this.userProfile.public_repos === 0) &&
+      ((this.userProfile.followers > 0 && this.userFollowers.length > 0) ||
+        this.userProfile.followers === 0) &&
+      !this.errorMessage
+    )
+      return true;
+    return false;
   }
 }

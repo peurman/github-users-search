@@ -9,6 +9,7 @@ import { FollowerCardComponent } from './components/follower-card/follower-card.
 import { LoaderComponent } from './components/loader/loader.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { MemberSincePipe } from './pipes/member-since.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     LoaderComponent,
     NotFoundComponent,
     ProfileComponent,
+    MemberSincePipe,
   ],
   imports: [CommonModule, HttpClientModule],
   exports: [HomeComponent],

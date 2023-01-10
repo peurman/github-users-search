@@ -2,14 +2,8 @@
 <div *ngIf="errorMessage">
   <app-not-found></app-not-found>
 </div>
-<div
-  *ngIf="
-    userProfile?.login &&
-    ((userProfile.public_repos > 0 && userRepos.length > 0) ||
-      userProfile.public_repos === 0) &&
-    ((userProfile.followers > 0 && userFollowers.length > 0) ||
-      userProfile.followers === 0)
-  ">
+<app-loader></app-loader>
+<div *ngIf="showInfo()">
   <app-profile [userData]="userProfile" [stars]="totalStars"></app-profile>
   <div class="main-repos__container">
     <h3 class="main-repos__title">Repositories</h3>

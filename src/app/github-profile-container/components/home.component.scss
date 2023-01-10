@@ -15,8 +15,13 @@ app-nav-bar {
     margin: 0;
   }
   .main-repos__no-repository {
-    padding: 40px;
+    padding: 30px;
     font-size: 1.2rem;
+    color: $read-only-color;
+    width: 400px;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    background-color: $background-color;
   }
   .main-repos__repositories {
     @include gridColumns;
@@ -33,8 +38,13 @@ app-nav-bar {
     margin: 0;
   }
   .main-follows__no-follower {
-    padding: 40px;
+    padding: 30px;
     font-size: 1.2rem;
+    color: $read-only-color;
+    width: 400px;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    background-color: $background-color;
   }
   .main-follows__followers {
     @include gridColumns;
