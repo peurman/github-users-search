@@ -1,6 +1,10 @@
-# GitHub Profile Searcher
+# GitHub Users Search
 
-## Week 7 - Exercise 2
+(created on January 2023)
+
+Deploy:  **<a target="_blank" href="https://github-profile-searcher-peurman.vercel.app/">HERE</a>**
+
+## Angular Trainee Program - week 7
 
 In this app you can **search users in GitHub**.
 
